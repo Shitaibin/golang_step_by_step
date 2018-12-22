@@ -19,7 +19,7 @@ Go语言实战
 
 可访问以上社区以获得更好阅读体验，也可访问以下Github链接。
 
-[Golang并发模型：轻松入门流水线模型](./golang_pipeline_step_by_step/README_simple.md)
-[Golang并发模型：轻松入门流水线FAN模式](./golang_pipeline_step_by_step)
-[Golang并发模型：合理退出并发协程](./golang_goroutine_exit)
+1. [Golang并发模型：轻松入门流水线模型](./golang_pipeline_step_by_step/README_simple.md)
+1. [Golang并发模型：轻松入门流水线FAN模式](./golang_pipeline_step_by_step)
+1. [Golang并发模型：合理退出并发协程](./golang_goroutine_exit)
 
