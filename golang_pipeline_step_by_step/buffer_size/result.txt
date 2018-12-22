@@ -1,0 +1,79 @@
+BenchmarkPipelineFanBuffered_0
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_0-8   	       1	9219641894 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	9.226s
+
+BenchmarkPipelineFanBuffered_1
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_1-8   	       1	8776362944 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	8.783s
+
+BenchmarkPipelineFanBuffered_2
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_2-8   	       1	8617797676 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	8.625s
+
+BenchmarkPipelineFanBuffered_3
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_3-8   	       1	8474600329 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	8.481s
+
+BenchmarkPipelineFanBuffered_4
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_4-8   	       1	7644141054 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.650s
+
+BenchmarkPipelineFanBuffered_5
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_5-8   	       1	7517122406 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.523s
+
+BenchmarkPipelineFanBuffered_6
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_6-8   	       1	7495494588 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.501s
+
+BenchmarkPipelineFanBuffered_7
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_7-8   	       1	7359642386 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.366s
+
+BenchmarkPipelineFanBuffered_8
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_8-8   	       1	7250329258 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.256s
+
+BenchmarkPipelineFanBuffered_9
+goos: darwin
+goarch: amd64
+pkg: github.com/shitaibin/golang_pipeline_step_by_step
+BenchmarkPipelineFanBuffered_9-8   	       1	7242636881 ns/op
+PASS
+ok  	github.com/shitaibin/golang_pipeline_step_by_step	7.248s

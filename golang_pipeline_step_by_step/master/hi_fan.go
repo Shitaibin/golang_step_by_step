@@ -1,0 +1,76 @@
+// hi_fan.go
+package main
+
+import (
+	"sync"
+	"time"
+)
+
+func producer(n int) <-chan int {
+	out := make(chan int)
+	go func() {
+		defer close(out)
+		for i := 0; i < n; i++ {
+			out <- i
+		}
+	}()
+	return out
+}
+
+func square(inCh <-chan int) <-chan int {
+	out := make(chan int)
+	go func() {
+		defer close(out)
+		for n := range inCh {
+			out <- n * n
+            // simulate
+			time.Sleep(time.Second)
+		}
+	}()
+
+	return out
+}
+
+func merge(cs ...<-chan int) <-chan int {
+	out := make(chan int)
+
+	var wg sync.WaitGroup
+
+	collect := func(in <-chan int) {
+		defer wg.Done()
+		for n := range in {
+			out <- n
+		}
+	}
+
+	wg.Add(len(cs))
+	// FAN-IN
+	for _, c := range cs {
+		go collect(c)
+	}
+
+	// 错误方式：直接等待是bug，死锁，因为merge写了out，main却没有读
+	// wg.Wait()
+	// close(out)
+
+	// 正确方式
+	go func() {
+		wg.Wait()
+		close(out)
+	}()
+
+	return out
+}
+
+func main() {
+	in := producer(10)
+
+	// FAN-OUT
+	c1 := square(in)
+	c2 := square(in)
+	c3 := square(in)
+
+	// consumer
+	for _ = range merge(c1, c2, c3) {
+	}
+}
