@@ -22,4 +22,7 @@ Go语言实战
 1. [Golang并发模型：轻松入门流水线模型](./golang_pipeline_step_by_step/README_simple.md)
 1. [Golang并发模型：轻松入门流水线FAN模式](./golang_pipeline_step_by_step)
 1. [Golang并发模型：合理退出并发协程](./golang_goroutine_exit)
-2. [Golang并发模型：一招掌握无阻塞通道读写](./channel/unblock_channel)
+1. [Golang并发模型：轻松入门select](./golang_select)
+1. [Golang并发模型：select进阶](./golang_select/README_advance.md)
+1. [Golang并发模型：轻松入门协程池](./goroutine_pool/)
+1. [Golang并发模型：一招掌握无阻塞通道读写](./channel/unblock_channel)
