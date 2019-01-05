@@ -26,5 +26,5 @@ Go语言实战
 1. [Golang并发模型：select进阶](./golang_select/README_advance.md)
 1. [Golang并发模型：轻松入门协程池](./goroutine_pool/)
 1. [Golang并发模型：一招掌握无阻塞通道读写](./channel/unblock_channel)
-1. [Golang并发的次优选择：sync包](./sync/)
+1. [Golang并发的次优选择：sync包](./sync_pkg/)
 
