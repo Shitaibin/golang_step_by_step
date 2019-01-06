@@ -13,7 +13,7 @@ Go语言实战
 - [个人博客](http://lessisbetter.site/)
 
 
-![](./img/gzh_qrcode_little.jpg)
+![](http://cdn.lessisbetter.site/2019-01-article_qrcode.jpg)
 
 ## 已发布文章
 
