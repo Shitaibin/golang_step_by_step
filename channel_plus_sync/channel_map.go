@@ -32,7 +32,7 @@ type Bank struct {
 	saving map[string]int // 每账户的存款金额
 }
 
-// Work 银行存取操作
+// Request 银行存取操作
 type Request struct {
 	op    string       // 存、取、查
 	name  string       // 操作的账号
@@ -55,7 +55,6 @@ func NewBank() *Bank {
 
 // Loop 银行处理客户请求
 func (b *Bank) Loop(reqCh chan *Request) {
-	// read from workCh
 	for req := range reqCh {
 		switch req.op {
 		case "deposite":
@@ -198,7 +197,7 @@ func waitResp(req *Request, expVal int) {
 	}
 }
 
-// xiaogang 花、查
+// xiaogang 存、花、查
 func xiaogang(wg *sync.WaitGroup, reqCh chan<- *Request) {
 	name := "xiaogang"
 	retCh := make(chan *Result)
