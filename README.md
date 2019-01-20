@@ -27,4 +27,5 @@ Go语言实战
 1. [Golang并发模型：轻松入门协程池](./goroutine_pool/)
 1. [Golang并发模型：一招掌握无阻塞通道读写](./channel/unblock_channel)
 1. [Golang并发的次优选择：sync包](./sync_pkg/)
-
+1. [Golang并发：再也不愁选channel还是选锁](./channel_plus_sync)
+1. [总结了才知道，原来channel有这么多用法！](./channel/practice)

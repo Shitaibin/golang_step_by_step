@@ -10,4 +10,4 @@ channel_plus_sync
 ``` 
 ## 正文
 
-[]()
+[Golang并发：再也不愁选channel还是选锁](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-channel-and-mutex.md)
