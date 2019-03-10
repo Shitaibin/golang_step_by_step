@@ -29,3 +29,5 @@ Go语言实战
 1. [Golang并发的次优选择：sync包](./sync_pkg/)
 1. [Golang并发：再也不愁选channel还是选锁](./channel_plus_sync)
 1. [总结了才知道，原来channel有这么多用法！](./channel/practice)
+1. [深入理解channel：设计+源码](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-channel-design-and-source.md)
+1. [Go语言高阶：调度器系列（1）起源](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-scheduler-1-history.md)
