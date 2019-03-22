@@ -14,3 +14,7 @@ func main() {
 func toInterface(i interface{}) {
 	fmt.Printf("addr of i: %x\n", &i)
 }
+
+// Output
+// addr of x: c000016080
+// addr of i: c00000e1e0
