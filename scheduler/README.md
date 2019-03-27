@@ -15,4 +15,6 @@
 ```
 
 
+## 系列文章正文
+- [Go语言高阶：调度器系列（1）起源](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-scheduler-1-history.md)
 - [Go调度器系列（2）宏观看调度器](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-scheduler-2-macro-view.md)
