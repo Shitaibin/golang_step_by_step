@@ -32,3 +32,4 @@ Go语言实战
 1. [深入理解channel：设计+源码](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-channel-design-and-source.md)
 1. [Go高级实践：反射3定律](./reflect/law_of_reflect)
 1. [Go语言高阶：调度器系列（1）起源](https://github.com/Shitaibin/shitaibin.github.io/blob/hexo_resource/source/_posts/golang-scheduler-1-history.md)
+1. [Go调度器系列（2）宏观看调度器](./scheduler)

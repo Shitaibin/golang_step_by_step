@@ -15,14 +15,14 @@ func main() {
 
 // 上面各项含义，来自[也谈Gotrouine调度器](https://tonybai.com/2017/06/23/an-intro-about-goroutine-scheduler/)：
 // SCHED：调试信息输出标志字符串，代表本行是goroutine scheduler的输出；
-// 6016ms：即从程序启动到输出这行日志的时间；
+// 0ms：即从程序启动到输出这行日志的时间；
 // gomaxprocs: P的数量；
 // idleprocs: 处于idle状态的P的数量；通过gomaxprocs和idleprocs的差值，我们就可知道执行go代码的P的数量；
 // threads: os threads的数量，包含scheduler使用的m数量，加上runtime自用的类似sysmon这样的thread的数量；
 // spinningthreads: 处于自旋状态的os thread数量；
 // idlethread: 处于idle状态的os thread的数量；
 // runqueue=1： go scheduler全局队列中G的数量；
-// [3 4 0 10]: 分别为4个P的local queue中的G的数量。
+// [0 0 0 0 0 0 0 0]: 分别为8个P的local queue中的G的数量。
 
 // 详细版本
 // ➜  one_routine1 git:(master) ✗ GODEBUG=schedtrace=1000,scheddetail=1 ./one_routine
