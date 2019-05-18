@@ -34,3 +34,10 @@ func main() {
 
 	wg.Wait()
 }
+
+// Output
+// ➜  interrupt git:(master) ✗ go run control_c.go
+// Running
+// Running
+// Running
+// ^CCatch interrupt
