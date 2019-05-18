@@ -35,6 +35,7 @@ Go语言实战
 1. [Go调度器系列（2）宏观看调度器](./scheduler)
 1. [Go调度器系列（3）图解调度原理](./scheduler)
 1. [Go调度器系列（4）源码阅读与探索](./scheduler)
+1. [实战Go内存泄露](./pprof/goroutine)
 
 -------------
 
