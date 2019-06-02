@@ -95,3 +95,17 @@ func (h *Host) SendTo(pid, msg string) {
 	p := h.GetPeer(pid)
 	p.WriteMsg(msg)
 }
+
+// NumOfPeers peer的数量
+func (h *Host) NumOfPeers() int {
+	retCh := make(chan int)
+	query := func(peers map[string]*Peer) {
+		retCh <- len(peers)
+	}
+
+	go func() {
+		h.opCh <- query
+	}()
+
+	return <-retCh
+}
