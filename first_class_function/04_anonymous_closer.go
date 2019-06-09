@@ -1,34 +1,59 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-type Operation func(b int) int
+func test1() {
+	sl := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
-func Add(b int) Operation {
-	return func(a int) int {
-		return a + b
+	for i, v := range sl {
+		go func() {
+			fmt.Printf("%d %d\n", i, v)
+		}()
 	}
+
+	time.Sleep(time.Second)
 }
 
-func Sub(b int) Operation {
-	return func(a int) int {
-		return a - b
+func test2() {
+
+	sl := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	for i, v := range sl {
+		go func(a, b int) {
+			fmt.Printf("%d %d\n", a, b)
+		}(i, v)
 	}
-}
-
-type Calculator struct {
-	v int
-}
-
-func (c *Calculator) Do(op Operation) {
-	c.v = op(c.v)
 }
 
 func main() {
-	var calc Calculator
-
-	calc.Do(Add(1)) // c.v = 1
-	calc.Do(Sub(2)) // c.v = -1
-
-	fmt.Println(calc.v) // -1
+	test1()
+	time.Sleep(time.Second)
+	fmt.Println("--------------")
+	test2()
+	time.Sleep(time.Second)
 }
+
+// ➜  first_class_function git:(master) ✗ go run 04_anonymous_closer.go
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// 9 9
+// --------------
+// 0 0
+// 2 2
+// 5 5
+// 9 9
+// 4 4
+// 7 7
+// 6 6
+// 8 8
+// 1 1
+// 3 3
