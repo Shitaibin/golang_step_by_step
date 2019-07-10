@@ -12,9 +12,5 @@ func main() {
 	}
 }
 
-// fatal error: all goroutines are asleep - deadlock!
-
-// goroutine 1 [chan receive]:
-// main.main()
-//         /Users/shitaibin/Workspace/golang_step_by_step/channel/ok/demo_select1.go:8 +0x69
-// exit status 2
+// 结果：
+// nothing
