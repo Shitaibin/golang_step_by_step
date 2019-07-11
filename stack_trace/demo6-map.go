@@ -8,17 +8,25 @@ func main() {
 	m := make(map[int]int)
 	m[1] = 2
 	fmt.Printf("addr of m: %p\n", &m)
-	// mp := (*Slice)(unsafe.Pointer(&m))
-	// fmt.Printf("slice.array: %p, slice.len: 0x%x, slice.cap: 0x%x\n", mp.array, mp.len, mp.cap)
 	test(m)
 }
 
 func test(m map[int]int) {
 	fmt.Printf("addr of m: %p\n", &m)
-	// mp := (*Slice)(unsafe.Pointer(&m))
-	// fmt.Printf("slice.array: %p, slice.len: 0x%x, slice.cap: 0x%x\n", mp.array, mp.len, mp.cap)
 	panic("want panic")
 }
+
+// output: map就不是把每个字段拆开传递了，参数太多了。。。
+// addr of m: 0xc42000c028
+// addr of m: 0xc42000c038
+// panic: want panic
+
+// goroutine 1 [running]:
+// main.test(0xc420088180)
+// 	/Users/shitaibin/Workspace/golang_step_by_step/stack_trace/demo6-map.go:20 +0xbe
+// main.main()
+// 	/Users/shitaibin/Workspace/golang_step_by_step/stack_trace/demo6-map.go:13 +0xe8
+// exit status 2
 
 // 定义同runtime.hmap
 // type Hmap struct {
