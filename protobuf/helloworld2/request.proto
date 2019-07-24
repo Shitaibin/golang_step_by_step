@@ -1,0 +1,7 @@
+syntax = "proto3";
+package helloworld;
+option go_package="./types";
+
+message Request {
+    string data = 1;
+}
