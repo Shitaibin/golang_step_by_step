@@ -11,27 +11,59 @@
 **当`case`上读一个通道时，如果这个通道是`nil`，则该`case`永远阻塞**。这个功能有1个妙用，`select`通常处理的是多个通道，当某个读通道关闭了，但不想`select`再继续关注此`case`，继续处理其他`case`，把该通道设置为`nil`即可。
 下面是一个合并程序等待两个输入通道都关闭后才退出的例子，就使用了这个特性。
 ```go
+package main
+
+import "fmt"
+
+func main() {
+	ch1 := gen()
+	ch2 := gen()
+
+	out := combine(ch1, ch2)
+
+	for x := range out {
+		fmt.Println(x)
+	}
+}
+
+func gen() chan int {
+	ch := make(chan int)
+
+	go func() {
+		defer close(ch)
+
+		for i := 0; i < 3; i++ {
+			x := i
+			ch <- x
+		}
+	}()
+
+	return ch
+}
+
 func combine(inCh1, inCh2 <-chan int) <-chan int {
 	// 输出通道
 	out := make(chan int)
 
 	// 启动协程合并数据
 	go func() {
-        defer close(out)
+		defer fmt.Println("combine exit")
+		defer close(out)
+
 		for {
 			select {
 			case x, open := <-inCh1:
 				if !open {
 					inCh1 = nil
-					continue
+					break
 				}
-				out<-x
+				out <- x
 			case x, open := <-inCh2:
 				if !open {
 					inCh2 = nil
-					continue
+					break
 				}
-				out<-x
+				out <- x
 			}
 
 			// 当ch1和ch2都关闭是才退出

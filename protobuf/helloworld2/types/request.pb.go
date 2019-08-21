@@ -5,9 +5,8 @@ package types
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -39,8 +38,6 @@ func (m *Request) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Request.Unmarshal(m, b)
 }
 func (m *Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	print("Called xxx marshal\n")
-	panic("I want see stack trace")
 	return xxx_messageInfo_Request.Marshal(b, m, deterministic)
 }
 func (m *Request) XXX_Merge(src proto.Message) {
