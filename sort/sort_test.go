@@ -12,7 +12,7 @@ import (
 
 func insertionSortFast(nums []int, a, b int) {
 	var tmp, j int
-	for i := a + 1; i < b; i++ {
+	for i := a + 1; i <= b; i++ {
 		tmp = nums[i]
 		j = i - 1
 		for ; j >= a && nums[j] > tmp; j-- {
@@ -22,8 +22,8 @@ func insertionSortFast(nums []int, a, b int) {
 	}
 }
 
-func insertionSortSlow(nums []int, a, b int) {
-	for i := a + 1; i < b; i++ {
+func insertionSort(nums []int, a, b int) {
+	for i := a + 1; i <= b; i++ {
 		for j := i; j > a && nums[j-1] > nums[j]; j-- {
 			nums[j-1], nums[j] = nums[j], nums[j-1]
 		}
@@ -31,25 +31,45 @@ func insertionSortSlow(nums []int, a, b int) {
 }
 
 func shellSort(nums []int, a, b int) {
+	for i := a + 6; i <= b; i++ {
+		if nums[i] < nums[i-6] {
+			nums[i], nums[i-6] = nums[i-6], nums[i]
+		}
+	}
+	insertionSort(nums, a, b)
+}
+
+// sort range [a,b]
+// func quickSortFast(nums []int, a, b int) {
+// 	for a < b {
+// 		pivot := doPivot(nums, a, b)
+// 		if pivot-1 > a {
+// 			quickSortFast(nums, a, pivot-1)
+// 		}
+
+// 		// 减少递归
+// 		a = pivot + 1
+// 	}
+// }
+
+// sort range [a,b]
+func quickSortFast(nums []int, a, b int) {
+	if b-a > 12 {
+		if a >= b {
+			return
+		}
+
+		pivot := doPivot(nums, a, b)
+		quickSortSlow(nums, a, pivot-1)
+		quickSortSlow(nums, pivot+1, b)
+	}
+
 	for i := a + 6; i < b; i++ {
 		if nums[i] < nums[i-6] {
 			nums[i], nums[i-6] = nums[i-6], nums[i]
 		}
 	}
-	insertionSortSlow(nums, a, b)
-}
-
-// sort range [a,b]
-func quickSortFast(nums []int, a, b int) {
-	for a < b {
-		pivot := doPivot(nums, a, b)
-		if pivot-1 > a {
-			quickSortFast(nums, a, pivot-1)
-		}
-
-		// 减少递归
-		a = pivot + 1
-	}
+	insertionSort(nums, a, b)
 }
 
 func quickSortSlow(nums []int, a, b int) {
@@ -62,7 +82,7 @@ func quickSortSlow(nums []int, a, b int) {
 	quickSortSlow(nums, pivot+1, b)
 }
 
-// doPivot returns the index of pivot
+// doPivot returns the index of pivot`
 func doPivot(nums []int, a, b int) int {
 	pivot := a
 	for a < b {
@@ -80,10 +100,10 @@ func doPivot(nums []int, a, b int) int {
 	return a
 }
 
-func TestInsertionSortSlow(t *testing.T) {
+func TestInsertionSort(t *testing.T) {
 	nums := []int{5, 3, 7, 1, 9, 3, 4, 6, 2, 8}
 	exp := []int{1, 2, 3, 3, 4, 5, 6, 7, 8, 9}
-	insertionSortSlow(nums, 0, len(nums))
+	insertionSort(nums, 0, len(nums)-1)
 	if !reflect.DeepEqual(nums, exp) {
 		t.Errorf("got: %v", nums)
 	}
@@ -92,7 +112,7 @@ func TestInsertionSortSlow(t *testing.T) {
 func TestInsertionSortFast(t *testing.T) {
 	nums := []int{5, 3, 7, 1, 9, 3, 4, 6, 2, 8}
 	exp := []int{1, 2, 3, 3, 4, 5, 6, 7, 8, 9}
-	insertionSortFast(nums, 0, len(nums))
+	insertionSortFast(nums, 0, len(nums)-1)
 	if !reflect.DeepEqual(nums, exp) {
 		t.Errorf("got: %v", nums)
 	}
@@ -101,7 +121,7 @@ func TestInsertionSortFast(t *testing.T) {
 func TestShellSort(t *testing.T) {
 	nums := []int{5, 3, 7, 1, 9, 3, 4, 6, 2, 8}
 	exp := []int{1, 2, 3, 3, 4, 5, 6, 7, 8, 9}
-	shellSort(nums, 0, len(nums))
+	shellSort(nums, 0, len(nums)-1)
 	if !reflect.DeepEqual(nums, exp) {
 		t.Errorf("got: %v", nums)
 	}
@@ -125,10 +145,10 @@ func TestQuickSortFast(t *testing.T) {
 	}
 }
 
-func BenchmarkInsertionSortSlow(b *testing.B) {
+func BenchmarkInsertionSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		nums := []int{5, 3, 7, 1, 9, 3, 4, 6, 2, 8}
-		insertionSortSlow(nums, 0, len(nums))
+		insertionSort(nums, 0, len(nums))
 	}
 }
 
