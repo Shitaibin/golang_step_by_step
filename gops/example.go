@@ -10,8 +10,8 @@ import (
 
 func main() {
 	if err := agent.Listen(agent.Options{
-		Addr:            "0.0.0.0:8848",
-		ConfigDir:       "/home/centos/gopsconfig",
+		Addr: "0.0.0.0:8848",
+		// ConfigDir:       "/home/centos/gopsconfig", // 最好使用默认
 		ShutdownCleanup: true}); err != nil {
 		log.Fatal(err)
 	}
