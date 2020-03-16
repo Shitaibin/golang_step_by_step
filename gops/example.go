@@ -9,7 +9,10 @@ import (
 )
 
 func main() {
-	if err := agent.Listen(agent.Options{}); err != nil {
+	if err := agent.Listen(agent.Options{
+		Addr:            "0.0.0.0:8848",
+		ConfigDir:       "/home/centos/gopsconfig",
+		ShutdownCleanup: true}); err != nil {
 		log.Fatal(err)
 	}
 
