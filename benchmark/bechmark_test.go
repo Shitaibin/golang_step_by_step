@@ -48,3 +48,8 @@ func BenchmarkSwapTParallel(b *testing.B) {
 		}
 	})
 }
+
+// 使用-v时，可以看到运行benchmark，会先运行test，可以使用-run=^$过滤掉所有test
+func TestSwap(t *testing.T) {
+	swap(1, 2)
+}
