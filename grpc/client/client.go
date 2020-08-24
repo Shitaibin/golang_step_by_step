@@ -34,6 +34,8 @@ func main() {
 		if err := stream.Send(&String{Value: "client 1"}); err != nil {
 			log.Println(err)
 		}
+
+		stream.CloseSend()
 	}()
 
 	go func() {
@@ -44,6 +46,7 @@ func main() {
 					return
 				}
 				log.Println(err)
+				return
 			}
 
 			log.Println(reply.GetValue())

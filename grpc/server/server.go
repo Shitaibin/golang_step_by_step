@@ -8,6 +8,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
+	"time"
 
 	grpc "google.golang.org/grpc"
 )
@@ -25,20 +26,43 @@ func (h *HelloServiceServerImpl) HiStream(stream HelloService_HiStreamServer) er
 	log.Println("Start stream server")
 	defer log.Println("End stream server")
 
-	for {
-		args, err := stream.Recv()
-		if err != nil {
-			if err == io.EOF {
-				return nil
-			}
-			return err
+	args, err := stream.Recv()
+	if err != nil {
+		if err == io.EOF {
+			return nil
 		}
+		log.Printf("receive error: %v\n", err)
+		return err
+	}
 
-		reply := &String{Value: "hi stream " + args.GetValue()}
-		if err := stream.Send(reply); err != nil {
-			return err
+	reply := &String{Value: "hi stream " + args.GetValue()}
+	if err := stream.Send(reply); err != nil {
+		return err
+	}
+
+	// 继续接收数据而丢弃，直到收到错误
+	errCh := make(chan struct{})
+	go func() {
+		_, err := stream.Recv()
+		if err != nil {
+			log.Printf("receive error: %v\n", err)
+			close(errCh)
+		}
+	}()
+
+	t := time.NewTicker(time.Second)
+	for {
+		select {
+		case <-t.C:
+			if err := stream.Send(reply); err != nil {
+				return err
+			}
+		case <-errCh:
+			return nil
 		}
 	}
+
+	return nil
 }
 
 func main() {
@@ -52,7 +76,7 @@ func main() {
 
 	// 开启pprof
 	go func() {
-		ip := "0.0.0.0:6060"
+		ip := "127.0.0.1:6060"
 		log.Println("Starting pprof")
 		if err := http.ListenAndServe(ip, nil); err != nil {
 			log.Printf("start pprof failed on %s\n", ip)
