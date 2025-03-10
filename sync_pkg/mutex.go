@@ -59,8 +59,8 @@ func (b *Bank) Query(name string) int {
 
 func main() {
 	b := NewBank()
-	go b.Deposit("xiaoming", 100)
-	go b.Withdraw("xiaoming", 20)
+	go b.Deposit("xiaomi", 100)
+	go b.Withdraw("xiaomi", 20)
 	go b.Deposit("xiaogang", 2000)
 
 	time.Sleep(time.Second)
